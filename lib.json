@@ -1,0 +1,90 @@
+[{
+		"title": "Sierpem i mlotem",
+		"date": "February 10, 2010",
+		"price": "20.99",
+		"author": "Jablonski Mirosław",
+		"publisher": "Level Trading",
+		"type":"audio",
+		"announcement":"zapowiedz"
+	},
+	{
+		"title": "Skylark 2. Skylark Trzeci",
+		"date": "February 20, 2008",
+		"price": "15.20",
+		"author": "E. E. Doc Smith",
+		"publisher": "Fabryka snów",
+		"type":"audio",
+		"announcement":"zapowiedz"
+	},
+	{
+		"title": "Nieśmiertelny z Wegi. Skylark w kosmosie",
+		"date": "January 31, 2012",
+		"price": "30.00",
+		"author": "Konrad Fiakowski",
+		"publisher": "Sonia Draga",
+		"type":"audio",
+		"announcement":"zapowiedz"
+	},
+	{
+		"title": "Zanieśmy im naszą wojnę Skylark w kosmosie",
+		"date": "February 19, 2013",
+		"price": "10.99",
+		"author": "Maciej Musialik",
+		"publisher": "WAB",
+		"type":"ebook",
+		"rodzaj":"new",
+		"announcement":"zapowiedz"
+	},
+	{
+		"title": "Zyć i umrzeć w Nowej Moskwie. Skylark w kosmosie",
+		"date": "February 22, 2000",
+		"price": "9.99",
+		"author": "Maciej Musialik",
+		"publisher": "Level Trading",
+		"type":"audio",
+		"chance":"okazje"
+	},
+	{
+		"title": "Wojny Haoltaskie 2. Skylark w kosmosie",
+		"date": "February 23, 1999",
+		"price": "80.00",
+		"author": "Czesław Biaczyski",
+		"publisher": "Sonia Draga",
+		"type":"ebook",
+		"chance":"okazje"
+	},
+	{
+		"title": "Kwadratura trójkąta. Skylark w kosmosie",
+		"date": "February 24, 2007",
+		"price": "30.00",
+		"author": "Czesław Biaczyski",
+		"publisher": "WAB",
+		"type":"audio",
+		"chance":"okazje"
+	},
+	{
+		"title": "Stara Ziemia. Skylark w kosmosie",
+		"date": "February 18, 2010",
+		"price": "14.99",
+		"author": "Marcin Wolski",
+		"publisher": "Level Trading",
+		"type":"ebook",
+		"chance":"okazje"
+	},
+	{
+		"title": "Bro ostateczna. Skylark w kosmosie",
+		"date": "February 02, 2011",
+		"price": "13.00",
+		"author": "Jerzy Puławski",
+		"publisher": "WAB",
+		"type":"audio"
+	},
+	{
+		"title": "Plazmoidy. Skylark w kosmosie",
+		"date": "February 15, 2012",
+		"price": "35.00",
+		"author": "James H. Schmitz",
+		"publisher": "Faryka Snów",
+		"type":"ebook"
+	}
+]

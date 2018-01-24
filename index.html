@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700&amp;subset=latin-ext" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+	
+	
+</head>
+<body ng-app="sample" ng-controller="myApp">
+
+
+<div class="container-wrapper">
+
+	<div class="header-wrapper">
+		<div class="header clearfix">
+		
+		<!-- LOGO TEXT -->
+			<div class="logo-text">
+				<h1>Księgarnia Internetowa</h1>
+				<p>Nasze sklepy prowadzimy z pasja!</p>
+			</div>
+		<!-- END LOGO TEXT -->
+
+		<!-- SEARCHING INPUT -->
+			<div class="search-wrapper">
+				<div class="search">
+					<span>Wyszukiwarka</span>
+					<input type="text" class="search_input" name="search_input" ng-model="searchText">
+					<input type="submit" value="Szukaj" ng-click="searchTxt(searchText)">
+				</div>
+			</div>
+		<!-- END SEARCHING INPUT -->
+
+		<!-- BASKET -->
+			<div class="basket-wrapper">
+				<div class="basket">
+					<div><span class="basket-text" ng-click="summaryBasket=true; showSummary()">Twoj koszyk:</span></div>
+					<div class="quantity-products">Liczba produktow: <span>{{basketArray.length}}</span></div>
+				</div>
+			</div>
+		<!-- END BASKET -->
+
+
+		</div>
+	</div>
+
+	<div class="catalog-wrapper">
+		<div class="catalog">
+			<h4>Katalog ksiażek</h4>
+
+			<!-- ZAKLADKI  -->
+			<div class="buttons clearfix">
+				<div>
+					<input type="submit" value="Wszystkie" ng-click="search=''">	
+				</div>
+				<div>
+					<input type="submit" value="Audiobooki" ng-click="search='audio'">
+				</div>
+				<div>
+					<input type="submit" value="Ebooki" ng-click="search='ebook'">	
+				</div>
+				<div>
+					<input type="submit" value="Nowości" ng-click="search='new'">	
+				</div>
+				<div>
+					<input type="submit" value="Zapowiedzi" ng-click="search='zapowiedz'">	
+				</div>
+				<div>
+					<input type="submit" value="Super okazje" ng-click="search='okazje'">	
+				</div>
+			</div>
+
+			<!-- TABELA Z WYSWIETLENIEM ELEMENTOW Z BAZY -->
+			<div class="table-responsive">
+				<table class="table  table-bordered ">
+					<thead>
+						<tr>
+							<td>Nazwa</td>
+							<td>Data wydania</td>
+							<td>Cena</td>
+							<td>Autor</td>
+							<td>Wydawnictwo</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="x in books | filter:search | orderBy:'title' | filter:searchTxt(searchText)">
+							<td> {{x.title}}</td>
+							<td> {{x.date}}</td>
+							<td> {{x.price}}</td>
+							<td> {{x.author}}</td>
+							<td> {{x.publisher}}</td>
+							<td>
+								<a href="" id="myBtn" ng-click="AddToBasket(x);">Dodaj do koszyka</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+<!-- FORMULARZ DODANIA PRODUKTOW DO KOSZYKA -->
+	<form action="#"  name="MyForm" ng-submit="SaveForm=true" class="myForm" id="myForm" ng-show="showBasket" ng-hide="!showBasket">
+		<div class="form-basket-wrapper">
+			<div class="form-basket">
+				<div class="form-basket-header clearfix">
+					<h6>Dodaj do koszyka</h4>
+					<a href="#" class="form-basket-icon" ng-click="closeBasketForm()">
+						<i class="ion-close"></i>
+					</a>
+				</div>
+
+				<div class="middle">
+					<div class="items-wrapper">
+						<div class="item">
+							<label for="">Tytul:</label>
+							<input type="text" readonly="true" ng-model="bookTitle" required>
+						</div>
+						<div class="item ">
+							<label for="">Nosnik:</label>
+							<select name="" id="" ng-model="data_device" required>
+								<option  ng-repeat="storage in storages" ng-value="storage.name">{{storage.name}}</option>
+							</select>
+						</div>
+						<div class="item">
+							<label for="">Ilosc: <span class="range">(1-999)</span></label>
+							<input type="number" min="1" max="999" ng-model="quantity" required="" >
+						</div>
+					</div>
+				</div>
+
+				<div class="form-buttons clearfix">
+					<input type="submit" value="OK" ng-click="summary(bookTitle, data_device, quantity); closeWindows()" ng-disabled="MyForm.$invalid">
+					<input type="submit" value="Anuluj" ng-click="cancel()">
+				</div>
+			</div>
+		</div>
+	</form>
+
+<!-- PODSUMOWANIE ZAMOWIENIA -->
+	<div class="table-responsive summary-table" id="summary-table" ng-show="summaryBasket">
+			<table class="table-summ  table-bordered ">
+				<div class="summary-header clearfix">
+					<span class="summary-left">Podsumowanie Twoich zakupów</span>
+					<span class="summary-right">
+						<a href="#" ng-click="cancelSummary()">
+							<i class="ion-close"></i>
+						</a>
+					</span>
+				</div>
+				<thead>
+					<tr>
+						<td>Nazwa ksiazki:</td>
+						<td>Nosnik:</td>
+						<td>Ilosc:</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="y in basketArray">
+						<td>{{y.title}}</td>
+						<td>{{y.rodzaj}}</td>
+						<td>{{y.ilosc}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript" src="js/script.js"></script>	
+<!-- <script type="text/javascript" src="js/script2.js"></script> -->	
+</body>
+</html>
